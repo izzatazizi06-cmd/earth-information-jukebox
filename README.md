@@ -1,53 +1,26 @@
-# Earth Information Jukebox — Website Prototype
+# Earth Information Jukebox — NASA GISTEMP v4 edition
 
-A standalone, responsive website inspired by the **2026 NASA Space Apps Challenge: The Earth Information Jukebox**.
+## Genuine NASA data now included
 
-**IMPORTANT:** Built-in temperature, ocean, and ice series are **illustrative invented numbers**. The globe is procedural artwork, **not** Earth Information Center (EIC) imagery. No NASA API or live data is connected. The website is an independent prototype and is not endorsed by NASA.
+**Global Temperature** loads verified NASA GISTEMP v4 *Land–Ocean Temperature Index* annual **J-D** anomalies, relative to the **1951–1980** mean, covering 1880–2025. The 2026 annual figure was omitted because the uploaded NASA source marks it incomplete (`***`). Data was taken from the user-provided official NASA CSV `GLB.Ts+dSST.csv`, preserving reported centidegree precision.
 
-## Cara buka (Windows)
+NASA source: https://data.giss.nasa.gov/gistemp/
+Direct NASA data downloads: https://data.giss.nasa.gov/gistemp/data_v4.html
 
-1. Extract fail ZIP.
-2. Buka folder `earth-information-jukebox`.
-3. Double-click `index.html` untuk buka dalam Chrome atau Microsoft Edge.
-4. Klik **Play soundscape** untuk aktifkan audio (browser memerlukan klik pengguna).
-5. Cuba **Auto travel**, tukar dataset, atau upload fail `sample-data.csv`.
+The website's **Global Temperature** button uses the NASA series by default without an upload step. The included `nasa-temperature.csv` provides a reusable year,value export. **Ocean Signals** and **Arctic Sea Ice** remain fictional illustrative demos and are labeled as such. The Earth globe is stylized artwork, not NASA Earth Information Center imagery. The generated audio is synthetic pitch mapping, not literal audio recorded from Earth.
 
-Untuk edit: buka folder ini di **VS Code**. Anda boleh gunakan Live Server, tetapi tidak wajib.
+## Publish to GitHub Pages
 
-## Features
+Upload these updated files into the ROOT of your existing GitHub repository `earth-information-jukebox`, replacing the old versions: `index.html`, `app.js`, `README.md`; add `nasa-temperature.csv`. The existing `styles.css` file is unchanged but may also be uploaded. Commit changes. Verify the public Pages URL and open the Global Temperature dataset.
 
-- Mobile-friendly visual design and artistic animated globe
-- Three **demo-only** themed datasets
-- Dynamic line chart, year slider, auto-play through time
-- Real-time synthesized sound from Web Audio API; numerical values map to pitch
-- Volume slider and mute toggle
-- Import your own CSV dataset (`year,value`), sorted by year and limited to 500 rows / 1 MB
-- No account, backend, database, API key, or paid packages needed
+## NASA project submission citation
 
-## Sound mapping
+**Link Text:** NASA GISS Surface Temperature Analysis (GISTEMP v4)
 
-Each numerical data value is normalized between the minimum and maximum of the current dataset. The value maps onto a 16-semitone range above 174.61 Hz; stronger changes shorten each note. Sound is generated in the browser, so there are no premade recorded samples.
+**Link URL:** https://data.giss.nasa.gov/gistemp/
 
-## How to improve for a real NASA submission
+Suggested truthful description: 'We integrated annual global land–ocean temperature anomaly data from NASA GISTEMP v4 (1880–2025), referenced to the 1951–1980 baseline, into the Global Temperature visualization and sonification. The Ocean and Arctic Ice modes remain illustrative. This is not an integration of NASA Earth Information Center visual frames.'
 
-1. Visit the [official challenge](https://www.spaceappschallenge.org/2026/challenges/the-earth-information-jukebox/) and read its **Resources** section.
-2. Select specific **NASA EIC / SVS visualization frames** and determine image permissions/credit requirements.
-3. Find the matching **measured dataset** behind the selected visualization (e.g. from NASA archives) and document variable, units, location, time period, uncertainty, and citation.
-4. Import the verified values via CSV and update labels, units, notes, bibliography, and visuals to match.
-5. If you want true automatic synchronization between EIC frames and sound, add frame-by-frame time alignment and an appropriate data interface. The current version does **not** implement that integration.
-6. Include a team name, presentation/demo video, and submission documentation as required by the challenge portal.
+## Development
 
-## Files
-
-- `index.html` — page structure
-- `styles.css` — theme and responsive layout
-- `app.js` — datasets, chart, globe, CSV parsing, and audio
-- `sample-data.csv` — **fictional test data** to verify import
-
-## Credits & links
-
-- Challenge: https://www.spaceappschallenge.org/2026/challenges/the-earth-information-jukebox/
-- No NASA pictures, logos, or proprietary media are packaged.
-- Optional Google Fonts are requested online; the site falls back to system fonts when offline.
-
-This is a prototype, not an official NASA product or a completed scientific research submission.
+HTML, CSS, JavaScript, Canvas and Web Audio API; no external libraries required. Open index.html locally or deploy through GitHub Pages. Browser audio starts after user interaction.
