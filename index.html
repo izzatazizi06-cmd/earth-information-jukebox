@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#081020" />
+  <meta name="description" content="Earth Information Jukebox — explore Earth data through sound and sight." />
+  <title>Earth Information Jukebox — Hear Our Planet</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="space-bg" aria-hidden="true"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Earth Jukebox home"><span class="brand-mark">◉</span><span>EARTH<span class="brand-muted">/</span>JUKEBOX</span></a>
+      <nav class="nav-links" aria-label="Main navigation"><a class="active" href="#explore">Explore</a><a href="#how">How it works</a><a href="#about">About</a></nav>
+      <span class="hackathon-tag"><span class="status-dot"></span> SPACE APPS 2026 · PROTOTYPE</span>
+    </header>
+
+    <main id="home">
+      <section class="hero" aria-labelledby="main-title">
+        <div class="hero-copy"><div class="eyebrow"><span class="eyebrow-line"></span> A NEW WAY TO EXPERIENCE EARTH</div>
+          <h1 id="main-title">Our planet has <em>a soundtrack.</em></h1>
+          <p>What if you could <strong>hear</strong> environmental change? Explore data-driven soundscapes where the patterns of our planet become music in real time.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#explore">Start exploring <span>↗</span></a><a class="btn btn-secondary" href="#how">How it works <span>→</span></a></div>
+          <div class="hero-foot"><span class="pulse-symbol">✦</span> A MULTISENSORY EARTH SCIENCE EXPERIENCE</div>
+        </div>
+        <div class="hero-visual" aria-label="Animated artistic Earth globe"><canvas id="earthCanvas" role="img" aria-label="Illustrated rotating Earth displaying interactive energy points"></canvas><div class="globe-glow"></div><div class="orbit-label label-one"><span class="signal-dot"></span> EARTH SYSTEMS</div><div class="orbit-label label-two">◌ LIVE SONIFICATION ENGINE</div><span class="globe-caption">OUR ONE AND ONLY HOME <b>01 / 01</b></span></div>
+      </section>
+
+      <section class="explorer" id="explore" aria-labelledby="explore-title">
+        <div class="section-intro"><div><div class="eyebrow"><span class="eyebrow-line"></span> INTERACTIVE STUDIO</div><h2 id="explore-title">The Earth <span>Sound Lab</span></h2><p>Choose a story, watch the data move, and listen to the science.</p></div><div class="demo-indicator" id="sourceBadge">● ILLUSTRATIVE DEMO DATA</div></div>
+        <div class="studio-grid">
+          <aside class="studio-sidebar"><div class="panel-label">01 / CHOOSE A SIGNAL</div>
+            <div class="dataset-options" role="group" aria-label="Select dataset">
+              <button class="dataset selected" data-set="temperature" aria-pressed="true"><span class="dataset-icon hot">☀</span><span><b>Global Temperature</b><small>Warming patterns</small></span><span class="dataset-arrow">↗</span></button>
+              <button class="dataset" data-set="ocean" aria-pressed="false"><span class="dataset-icon sea">≋</span><span><b>Ocean Signals</b><small>Sea level change</small></span><span class="dataset-arrow">↗</span></button>
+              <button class="dataset" data-set="ice" aria-pressed="false"><span class="dataset-icon ice">❄</span><span><b>Arctic Sea Ice</b><small>Changing ice extent</small></span><span class="dataset-arrow">↗</span></button>
+            </div>
+            <div class="divider"></div><div class="panel-label">02 / YOUR OWN DATA</div>
+            <label class="upload-box" for="csvInput"><span class="upload-symbol">↥</span><b>Upload a CSV dataset</b><small>year,value columns · local file</small></label><input id="csvInput" type="file" accept=".csv,text/csv" hidden />
+            <p class="hint">Upload a verified dataset to replace demo values. Data stays in your browser.</p>
+            <button class="text-button" id="resetBtn" type="button">↺ Reset demo data</button>
+          </aside>
+          <div class="main-panel"><div class="visual-top"><div><span class="tiny-label">NOW EXPLORING</span><h3 id="dataTitle">Global Temperature</h3><p id="dataSubtitle">Illustrative warming trend, not observational measurements</p></div><span class="live-pill"><span class="live-dot"></span> INTERACTIVE</span></div>
+            <div class="big-stat"><span id="statValue">+0.42</span><span id="statUnit">°C</span><span id="statYear">YEAR 2000</span></div>
+            <div class="chart-wrap"><canvas id="chartCanvas" role="img" aria-label="Interactive time series chart of current data"></canvas><div class="chart-legend"><span class="legend-dot"></span><span id="legendName">Temperature index · illustrative</span></div></div>
+            <div class="time-control"><div class="time-heading"><span>TIME TRAVEL</span><b id="yearDisplay">2000</b></div><input type="range" id="yearSlider" min="0" max="20" step="1" value="0" aria-label="Choose year" /><div class="range-end"><span id="yearStart">2000</span><span id="yearEnd">2020</span></div></div>
+          </div>
+          <aside class="sound-panel"><div class="panel-label">03 / HEAR THE DATA</div><div class="audio-art"><div class="audio-halo"><span>♫</span></div><div class="audio-bars" id="audioBars" aria-hidden="true"></div></div><h3>Planetary <em>soundscape</em></h3><p>Data mapped to pitch, rhythm and harmony as the timeline moves.</p>
+            <button class="play-button" id="playBtn" type="button"><span id="playIcon">▶</span><span id="playText">Play soundscape</span></button>
+            <div class="volume-row"><label for="volumeSlider">VOLUME</label><span id="volumeText">35%</span></div><input id="volumeSlider" type="range" min="0" max="100" value="35" aria-label="Volume" />
+            <div class="sound-detail"><span>SONIFICATION MAP</span><div><span>Value</span><b>→ Pitch</b></div><div><span>Change speed</span><b>→ Rhythm</b></div><div><span>Signal strength</span><b>→ Brightness</b></div></div>
+          </aside>
+        </div>
+        <div class="below-panel"><div class="explain-card"><span class="info-icon">i</span><p id="scienceNote"><b>You're hearing the data, not a recording of Earth.</b> Higher temperature-index values create higher notes. The built-in values are fictional examples for demonstrating the interaction.</p></div><div class="playback-controls"><button id="autoBtn" type="button" class="small-btn">▶ Auto travel</button><button id="muteBtn" type="button" class="small-btn" aria-pressed="false">♫ Sound on</button></div></div>
+      </section>
+
+      <section class="how-section" id="how"><div class="eyebrow"><span class="eyebrow-line"></span> BEHIND THE EXPERIENCE</div><h2>From numbers <em>to notes.</em></h2><p class="how-lead">Sonification turns information into sound so people can explore patterns in another way. Every note here is generated by your browser, not played from an audio recording.</p><div class="steps"><div class="step"><span>01</span><div class="step-icon">▤</div><h3>Choose data</h3><p>Explore example Earth signals, or import a CSV with real measurements.</p></div><div class="step"><span>02</span><div class="step-icon">⌁</div><h3>Find the pattern</h3><p>The timeline maps numeric values to musical properties.</p></div><div class="step"><span>03</span><div class="step-icon">♫</div><h3>Listen & discover</h3><p>Hear how the sound changes while the chart shows the same data.</p></div></div></section>
+      <section class="about-section" id="about"><div><div class="eyebrow">THE MISSION</div><h2>Science is for <em>everyone.</em></h2></div><div><p>Created as an independent prototype inspired by the <a href="https://www.spaceappschallenge.org/2026/challenges/the-earth-information-jukebox/" target="_blank" rel="noopener noreferrer">2026 NASA Space Apps Challenge: The Earth Information Jukebox</a>. This project demonstrates real-time browser sonification, an accessible chart, and CSV import.</p><p><strong>Transparency:</strong> Built-in series and globe artwork are illustrative, not NASA Earth Information Center frames or live NASA measurements. For a research submission, connect verified EIC imagery and cite its linked datasets.</p></div></section>
+    </main>
+    <footer><span>◉ EARTH/JUKEBOX</span><span>Made for curious minds & our changing planet.</span><span>INDEPENDENT PROTOTYPE · NOT AFFILIATED WITH NASA</span></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
